@@ -14,41 +14,37 @@ const forecastContainer = document.getElementById("forecastContainer");
 
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
+// ---------- Fetch Current Weather ----------
 async function getWeather(city) {
-    const url =
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-
+    const url = 
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     const res = await fetch(url);
-    if (!res.ok) {
-        alert("City not found");
-        return;
-    }
-
     const data = await res.json();
     displayCurrent(data);
     getForecast(city);
 }
 
+// ---------- Display Current Weather ----------
 function displayCurrent(data) {
     cityName.textContent = data.name;
     temperature.textContent = `${data.main.temp}°C`;
-    conditions.textContent = data.weather[0].description.toUpperCase();
+    conditions.textContent = data.weather[0].description;
 
-    const icon = data.weather[0].icon;
-    weatherIcon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    const iconCode = data.weather[0].icon;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
     updateBackground(data.weather[0].main);
 }
 
+// ---------- Fetch 5-Day Forecast ----------
 async function getForecast(city) {
-    const url =
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
-
+    const url = 
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
     const res = await fetch(url);
     const data = await res.json();
 
     forecastContainer.innerHTML = "";
-    const list = data.list.filter(i => i.dt_txt.includes("12:00:00"));
+    const list = data.list.filter(item => item.dt_txt.includes("12:00:00"));
 
     list.forEach(day => {
         const div = document.createElement("div");
@@ -62,6 +58,7 @@ async function getForecast(city) {
     });
 }
 
+// ---------- Save Favorites ----------
 saveFavBtn.onclick = () => {
     const city = cityName.textContent;
     if (!favorites.includes(city)) {
@@ -76,29 +73,29 @@ function loadFavorites() {
     favorites.forEach(city => {
         const li = document.createElement("li");
         li.textContent = city;
-        li.style.cursor = "pointer";
         li.onclick = () => getWeather(city);
         favList.appendChild(li);
     });
 }
 
+// ---------- Geolocation ----------
 locBtn.onclick = () => {
     navigator.geolocation.getCurrentPosition(async pos => {
         const { latitude, longitude } = pos.coords;
 
-        const url =
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+        const url = 
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
         const res = await fetch(url);
         const data = await res.json();
-
         displayCurrent(data);
         getForecast(data.name);
     });
 };
 
+// ---------- Dynamic Background ----------
 function updateBackground(condition) {
-    const images = {
+    const bg = {
         Clear: "sunny.jpg",
         Clouds: "cloudy.jpg",
         Rain: "rain.jpg",
@@ -108,12 +105,14 @@ function updateBackground(condition) {
     };
 
     document.body.style.backgroundImage =
-        `url('assets/${images[condition] || "default.jpg"}')`;
+        `url('assets/${bg[condition] || "default.jpg"}')`;
 }
 
+// ---------- Search Button ----------
 searchBtn.onclick = () => {
     const city = cityInput.value.trim();
     if (city) getWeather(city);
 };
 
+// Load favorites on startup
 loadFavorites();
