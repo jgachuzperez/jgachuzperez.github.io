@@ -10,66 +10,40 @@ body {
     color: #fff;
 }
 
-.container {
+.app-container {
     width: 90%;
     max-width: 900px;
     margin: 40px auto;
-}
-
-header {
     text-align: center;
-    margin-bottom: 25px;
 }
 
-.search-area {
-    margin-top: 10px;
-}
-
-input {
+header input {
     padding: 10px;
-    width: 55%;
-    border-radius: 6px;
+    width: 60%;
+    border-radius: 5px;
     border: none;
 }
 
-button {
+header button {
     padding: 10px 15px;
     margin-left: 5px;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 5px;
     border: none;
-    background: #444;
-    color: #fff;
 }
 
 .card {
-    background: rgba(0, 0, 0, 0.55);
-    margin-top: 20px;
+    background: rgba(0,0,0,0.5);
     padding: 20px;
+    margin-top: 20px;
     border-radius: 10px;
-    text-align: center;
 }
 
 #forecastContainer {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
 }
 
 .forecast-item {
-    width: 100px;
-    margin: 10px;
     padding: 10px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-}
-
-.forecast-item img {
-    width: 60px;
-}
-
-.fav-btn {
-    margin-top: 10px;
-    background: gold;
-    color: black;
 }
