@@ -1,2 +1,2 @@
-# WeatherApp
-This is where I will upload my files for my weather app
+# calculator app
+This is where I will upload my files for my calculator app
