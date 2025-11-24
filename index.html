@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Weather App</h1>
+            <div class="search-area">
+                <input type="text" id="cityInput" placeholder="Enter a city..." />
+                <button id="searchBtn">Search</button>
+                <button id="locBtn">Use My Location</button>
+            </div>
+        </header>
+
+        <main>
+            <section id="currentWeather" class="card">
+                <h2 id="cityName">City</h2>
+                <img id="weatherIcon" src="" alt="Weather Icon" />
+                <p id="temperature"></p>
+                <p id="conditions"></p>
+                <button id="saveFavBtn" class="fav-btn">★ Save to Favorites</button>
+            </section>
+
+            <section id="forecast" class="card">
+                <h2>5-Day Forecast</h2>
+                <div id="forecastContainer"></div>
+            </section>
+
+            <section id="favorites" class="card">
+                <h2>Favorite Cities</h2>
+                <ul id="favList"></ul>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
