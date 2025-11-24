@@ -7,40 +7,41 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-    <div class="container">
+    <div class="app-container">
 
         <header>
             <h1>Weather App</h1>
-            <div class="search-area">
-                <input type="text" id="cityInput" placeholder="Enter a city..." />
-                <button id="searchBtn">Search</button>
-                <button id="locBtn">Use My Location</button>
-            </div>
+            <input type="text" id="cityInput" placeholder="Search city..." />
+            <button id="searchBtn">Search</button>
+            <button id="locBtn">🌍 Use My Location</button>
         </header>
 
-        <main>
-            <section id="currentWeather" class="card">
-                <h2 id="cityName">City</h2>
-                <img id="weatherIcon" src="" alt="Weather Icon" />
-                <p id="temperature"></p>
-                <p id="conditions"></p>
-                <button id="saveFavBtn" class="fav-btn">★ Save to Favorites</button>
-            </section>
+        <section id="currentWeather" class="card">
+            <h2 id="cityName">City</h2>
+            <img id="weatherIcon" src="" alt="Weather icon" />
+            <p id="temperature"></p>
+            <p id="conditions"></p>
+            <button id="saveFavBtn">⭐ Save to Favorites</button>
+        </section>
 
-            <section id="forecast" class="card">
-                <h2>5-Day Forecast</h2>
-                <div id="forecastContainer"></div>
-            </section>
+        <section id="forecast" class="card">
+            <h2>5-Day Forecast</h2>
+            <div id="forecastContainer"></div>
+        </section>
 
-            <section id="favorites" class="card">
-                <h2>Favorite Cities</h2>
-                <ul id="favList"></ul>
-            </section>
-        </main>
+        <section id="favorites" class="card">
+            <h2>Favorites</h2>
+            <ul id="favList"></ul>
+        </section>
+
+        <section id="charts" class="card">
+            <h2>Historical Trends</h2>
+            <canvas id="historyChart"></canvas>
+        </section>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
