@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functional Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Functional Calculator</h1>
+    <p>A web-based calculator with basic, memory, and scientific features. Switch between dark and light themes.</p>
+
+    <div id="calculator">
+        <input type="text" id="display" disabled placeholder="0">
+
+        <div class="buttons">
+            <button class="num">7</button>
+            <button class="num">8</button>
+            <button class="num">9</button>
+            <button class="operator">÷</button>
+            <button id="mPlus">M+</button>
+
+            <button class="num">4</button>
+            <button class="num">5</button>
+            <button class="num">6</button>
+            <button class="operator">×</button>
+            <button id="mMinus">M-</button>
+
+            <button class="num">1</button>
+            <button class="num">2</button>
+            <button class="num">3</button>
+            <button class="operator">−</button>
+            <button id="clear">C</button>
+
+            <button class="num">0</button>
+            <button class="num">.</button>
+            <button id="equals">=</button>
+            <button class="operator">+</button>
+            <button id="theme">Theme</button>
+        </div>
+
+        <div id="scientific" class="hidden">
+            <button class="sci">sin</button>
+            <button class="sci">cos</button>
+            <button class="sci">log</button>
+            <button id="toggleSci">Toggle Sci</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
