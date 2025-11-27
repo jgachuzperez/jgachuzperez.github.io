@@ -7,11 +7,13 @@
 </head>
 <body>
     <h1>Functional Calculator</h1>
-    <p>A web-based calculator supporting basic arithmetic, memory functions, scientific mode, and dark/light themes.</p>
+    <p>A web-based calculator supporting basic arithmetic, memory functions, scientific mode, and dark/light theme.</p>
 
     <div id="calculator">
+        <!-- Display -->
         <input type="text" id="display" disabled placeholder="0">
 
+        <!-- Main Buttons Grid -->
         <div class="buttons">
             <button class="num">7</button>
             <button class="num">8</button>
@@ -38,11 +40,14 @@
             <button id="theme">Theme</button>
         </div>
 
+        <!-- Scientific Buttons Grid -->
         <div id="scientific" class="hidden">
-            <button class="sci">sin</button>
-            <button class="sci">cos</button>
-            <button class="sci">log</button>
-            <button id="toggleSci">Toggle Sci</button>
+            <div class="sci-buttons">
+                <button class="sci">sin</button>
+                <button class="sci">cos</button>
+                <button class="sci">log</button>
+                <button id="toggleSci">Toggle Sci</button>
+            </div>
         </div>
     </div>
 
