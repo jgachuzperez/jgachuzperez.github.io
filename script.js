@@ -26,7 +26,6 @@ equals.addEventListener('click', () => {
     try {
         let result = eval(expression);
         display.value = result;
-        saveCalculation(current, result); // Send to backend
         current = result.toString();
     } catch (e) {
         display.value = 'Error';
@@ -61,25 +60,12 @@ sciBtns.forEach(btn => {
         }
         display.value = res;
         current = res.toString();
-        saveCalculation(btn.innerText + '(' + val + ')', res);
     });
 });
 
 toggleSci.addEventListener('click', () => {
     scientific.classList.toggle('hidden');
 });
-
-// Save calculation to backend
-function saveCalculation(expression, result) {
-    fetch('http://localhost:3000/api/history', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ expression, result })
-    })
-    .then(res => res.json())
-    .then(data => console.log('Saved:', data))
-    .catch(err => console.error(err));
-}
 
 // Keyboard support
 document.addEventListener('keydown', e => {
