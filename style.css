@@ -34,7 +34,7 @@ p {
     border-radius: 5px;
 }
 
-/* Button Grid */
+/* Main Buttons Grid */
 .buttons {
     display: grid;
     grid-template-columns: repeat(5, 50px); /* 5 buttons per row */
@@ -71,13 +71,20 @@ button:hover {
     margin-top: 15px;
 }
 
+.sci-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 60px); /* 4 buttons per row */
+    grid-gap: 8px;
+    justify-content: center;
+}
+
 #scientific button {
-    width: 60px;
     height: 40px;
-    margin: 3px;
     font-size: 16px;
-    background-color: #eee;
     border-radius: 5px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
 }
 
 #scientific button:hover {
