@@ -1,3 +1,4 @@
+// References
 const display = document.getElementById('display');
 const buttons = document.querySelectorAll('.num, .operator');
 const equals = document.getElementById('equals');
@@ -9,10 +10,10 @@ const sciBtns = document.querySelectorAll('.sci');
 const toggleSci = document.getElementById('toggleSci');
 const scientific = document.getElementById('scientific');
 
-let current = '';
-let memory = 0;
+let current = '';  // Current input
+let memory = 0;    // Memory value
 
-// Basic buttons
+// 1️⃣ Basic Number and Operator Buttons
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         current += btn.innerText;
@@ -20,10 +21,11 @@ buttons.forEach(btn => {
     });
 });
 
-// Equals
+// 2️⃣ Equals Button
 equals.addEventListener('click', () => {
-    let expression = current.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
     try {
+        // Replace symbols with JS operators
+        let expression = current.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
         let result = eval(expression);
         display.value = result;
         current = result.toString();
@@ -33,27 +35,32 @@ equals.addEventListener('click', () => {
     }
 });
 
-// Clear
+// 3️⃣ Clear Button
 clear.addEventListener('click', () => {
     current = '';
     display.value = '';
 });
 
-// Theme toggle
+// 4️⃣ Theme Toggle
 themeBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
-// Memory buttons
-mPlus.addEventListener('click', () => { memory += parseFloat(display.value) || 0; });
-mMinus.addEventListener('click', () => { memory -= parseFloat(display.value) || 0; });
+// 5️⃣ Memory Functions
+mPlus.addEventListener('click', () => {
+    memory += parseFloat(display.value) || 0;
+});
 
-// Scientific functions
+mMinus.addEventListener('click', () => {
+    memory -= parseFloat(display.value) || 0;
+});
+
+// 6️⃣ Scientific Functions
 sciBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         let val = parseFloat(display.value) || 0;
         let res = 0;
-        switch(btn.innerText) {
+        switch (btn.innerText) {
             case 'sin': res = Math.sin(val); break;
             case 'cos': res = Math.cos(val); break;
             case 'log': res = Math.log(val); break;
@@ -63,15 +70,21 @@ sciBtns.forEach(btn => {
     });
 });
 
+// Toggle Scientific Panel
 toggleSci.addEventListener('click', () => {
     scientific.classList.toggle('hidden');
 });
 
-// Keyboard support
+// 7️⃣ Keyboard Support
 document.addEventListener('keydown', e => {
-    if (!isNaN(e.key) || e.key === '.') current += e.key;
-    if (['+', '-', '*', '/'].includes(e.key)) current += e.key;
-    if (e.key === 'Enter') equals.click();
-    if (e.key === 'Backspace') current = current.slice(0, -1);
+    if (!isNaN(e.key) || e.key === '.') {
+        current += e.key;
+    } else if (['+', '-', '*', '/'].includes(e.key)) {
+        current += e.key;
+    } else if (e.key === 'Enter') {
+        equals.click();
+    } else if (e.key === 'Backspace') {
+        current = current.slice(0, -1);
+    }
     display.value = current;
 });
