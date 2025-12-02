@@ -1,4 +1,3 @@
-// References
 const display = document.getElementById('display');
 const buttons = document.querySelectorAll('.num, .operator');
 const equals = document.getElementById('equals');
@@ -10,10 +9,10 @@ const sciBtns = document.querySelectorAll('.sci');
 const toggleSci = document.getElementById('toggleSci');
 const scientific = document.getElementById('scientific');
 
-let current = '';  // Current input
-let memory = 0;    // Memory value
+let current = '';  //Current input
+let memory = 0;    //Memory value
 
-// 1️⃣ Basic Number and Operator Buttons
+//Basic Number and Operator Buttons
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         current += btn.innerText;
@@ -21,10 +20,10 @@ buttons.forEach(btn => {
     });
 });
 
-// 2️⃣ Equals Button
+//Equals Button
 equals.addEventListener('click', () => {
     try {
-        // Replace symbols with JS operators
+        //Replace symbols with JS operators
         let expression = current.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
         let result = eval(expression);
         display.value = result;
@@ -35,18 +34,18 @@ equals.addEventListener('click', () => {
     }
 });
 
-// 3️⃣ Clear Button
+//Clear Button
 clear.addEventListener('click', () => {
     current = '';
     display.value = '';
 });
 
-// 4️⃣ Theme Toggle
+//Theme Toggle
 themeBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
-// 5️⃣ Memory Functions
+//Memory Functions
 mPlus.addEventListener('click', () => {
     memory += parseFloat(display.value) || 0;
 });
@@ -55,7 +54,7 @@ mMinus.addEventListener('click', () => {
     memory -= parseFloat(display.value) || 0;
 });
 
-// 6️⃣ Scientific Functions
+//Scientific Functions
 sciBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         let val = parseFloat(display.value) || 0;
@@ -70,12 +69,12 @@ sciBtns.forEach(btn => {
     });
 });
 
-// Toggle Scientific Panel
+//Toggle Scientific Panel
 toggleSci.addEventListener('click', () => {
     scientific.classList.toggle('hidden');
 });
 
-// 7️⃣ Keyboard Support
+//Keyboard Support
 document.addEventListener('keydown', e => {
     if (!isNaN(e.key) || e.key === '.') {
         current += e.key;
